@@ -1,13 +1,23 @@
-import { colors } from "@/styles/theme"
-import { Text, View } from "react-native"
-import { styles } from "./styles"
+import type { ComponentType } from 'react'
+import { Text, View } from 'react-native'
+import type { IconProps } from '@tabler/icons-react-native'
 
-export function Step(){
-  return(
+import { styles } from './style'
+import { colors } from '@/styles/theme'
+
+type StepProps = {
+  title: string
+  description: string
+  icon: ComponentType<IconProps>
+}
+
+export function Step({ title, description, icon: Icon }: StepProps) {
+  return (
     <View style={styles.container}>
-      <View>
-        <Text style={styles.title}>Titulo</Text>
-        <Text style={styles.description}>Descrição</Text>
+      {Icon && <Icon size={32} color={colors.red.base} />}
+      <View style={styles.details}>
+        <Text style={styles.title}>{title}</Text>
+        <Text style={styles.description}>{description}</Text>
       </View>
     </View>
   )
